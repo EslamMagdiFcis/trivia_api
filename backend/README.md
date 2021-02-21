@@ -72,9 +72,11 @@ This README is missing documentation of your endpoints. Below is an example for 
 
 Endpoints
 GET '/categories'
-GET ...
-POST ...
-DELETE ...
+GET '/questions'
+GET '/categories/<string:category_id>/questions'
+POST '/questions'
+POST '/quizzes'
+DELETE '/questions/<int:question_id>'
 
 GET '/categories'
 - Fetches a dictionary of categories in which the keys are the ids and the value is the corresponding string of the category
@@ -87,6 +89,104 @@ GET '/categories'
 '5' : "Entertainment",
 '6' : "Sports"}
 
+GET '/questions'
+- Fetches a dictionary of questions of frist category in which contains id, question, answer, category and difficulty of question
+- Request Arguments: page
+- Returns: An object consist of id, question, answer, category and difficulty of question.
+
+{
+  "categories": [
+    "Science", 
+    "Art", 
+    "Geography", 
+    "History", 
+    "Entertainment", 
+    "Sports"
+  ], 
+  "current_category": "Science", 
+  "questions": [
+    {
+      "answer": "The Liver", 
+      "category": 1, 
+      "difficulty": 4, 
+      "id": 20, 
+      "question": "What is the heaviest organ in the human body?"
+    }, 
+    {
+      "answer": "Alexander Fleming", 
+      "category": 1, 
+      "difficulty": 3, 
+      "id": 21, 
+      "question": "Who discovered penicillin?"
+    }, 
+    {
+      "answer": "Blood", 
+      "category": 1, 
+      "difficulty": 4, 
+      "id": 22, 
+      "question": "Hematology is a branch of medicine involving the study of what?"
+    }, 
+    {
+      "answer": "Elsam Magdi", 
+      "category": 1, 
+      "difficulty": 1, 
+      "id": 24, 
+      "question": "what is your name?"
+    }
+  ], 
+  "success": true, 
+  "total_questions": 4
+}
+
+
+GET '/categories/<string:category_id>/questions'
+- Fetches a dictionary of question in selected category id
+- Request Arguments: page
+- Returnes: An object contains category and its questions
+
+{
+  "current_category": {
+    "id": 5, 
+    "type": "Entertainment"
+  }, 
+  "questions": [
+    {
+      "answer": "Tom Cruise", 
+      "category": 5, 
+      "difficulty": 4, 
+      "id": 4, 
+      "question": "What actor did author Anne Rice first denounce, then praise in the role of her beloved Lestat?"
+    }, 
+    {
+      "answer": "Edward Scissorhands", 
+      "category": 5, 
+      "difficulty": 3, 
+      "id": 6, 
+      "question": "What was the title of the 1990 fantasy directed by Tim Burton about a young man with multi-bladed appendages?"
+    }, 
+    {
+      "answer": "i am fine", 
+      "category": 5, 
+      "difficulty": 2, 
+      "id": 26, 
+      "question": "how are you"
+    }
+  ], 
+  "success": true, 
+  "total_questions": 3
+}
+
+POST '/questions'
+- Create new question via send json object constains of question, answer, category and  difficulty of question.
+
+- Serach in questions and return matched questions using searchteam form elment
+
+
+POST '/quizzes'
+- send quiz_category value and previous_questions list and fetch random unseen question
+
+DELETE '/questions/<int:question_id>'
+- Delete question with gevin question_id
 ```
 
 

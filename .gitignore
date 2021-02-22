@@ -131,3 +131,6 @@ dmypy.json
 
 #IDE helper dir
 .vscode
+
+
+/frontend/node_modules
